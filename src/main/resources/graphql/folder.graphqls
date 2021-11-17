@@ -1,0 +1,31 @@
+type Folder {
+    idFolder:ID!,
+    name:String!
+    type:String
+	description:String
+    path:String!
+    images:[Image!]
+}
+
+input FolderInput {
+    idFolder:ID,
+    name:String!
+    type:String
+	description:String
+    path:String!
+}
+
+extend type Query {
+    folder(name:String!): Folder
+
+    folders:[Folder!]
+}
+
+extend type Mutation {
+
+    saveFolder(folder:FolderInput!):Folder!
+
+    deleteFolder(idFolder:ID!):Boolean!
+    
+    deleteFolder(name:String!):Boolean!
+}

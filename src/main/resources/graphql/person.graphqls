@@ -1,0 +1,25 @@
+type Person {
+    idPerson: ID!
+    name: Int!,
+    birthDate: Date!
+    email:String!
+}
+
+input PersonInput {
+    idPerson: ID!
+    name: Int!,
+    birthDate: Date!
+    email:String!
+}
+
+extend type Query {
+    person(idPerson:ID!):Person
+    persons:[Person!]
+    personsPageable(page:Int = 0, size:Int = 10):[Person!]
+}
+
+extend type Mutation {
+    savePerson(person:PersonInput!):Person!
+
+    deletePerson(idPerson:ID!):Boolean!
+}

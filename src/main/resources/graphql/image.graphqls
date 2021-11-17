@@ -1,0 +1,30 @@
+type Image {
+    idImage: ID!
+    name: String!,
+    description: String
+    altDescription: String,
+    path: String!
+    type: String!
+}
+
+input ImageInput {
+    idImage: ID!
+    name: String!,
+    description: String
+    altDescription: String,
+    path: String!
+    type: String!
+}
+
+extend type Query {
+    image(idImage:ID!): Image
+
+    images:[Image]!
+}
+
+extend type Mutation {
+
+    saveImage(image : ImageInput!) : Image!
+
+    deleteImage(idImage:ID! ):Boolean!
+}
